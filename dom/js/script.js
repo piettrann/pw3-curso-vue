@@ -8,15 +8,32 @@ new Vue({
         pais: 'Argentina',
 
         contador: 0,
+        contador2: 0,
 
         x: 0,
-        y: 0
+        y: 0,
+
+        titulo: 'Qualquer coisa'
     },
-    methods: {
+    watch: {
+        contador(valorNovo, valorAntigo) {
+            console.log(`Valor Antigo: ${valorAntigo}`);
+            console.log(`Valor Novo: ${valorNovo}`);
+            setTimeout(() => {
+                this.contador = 0;
+            }, 3000)
+        }
+    },
+    computed: {
+        verificadorDoContador() {
+            console.log('Me chamou!');
+            return this.contador > 49 ? "Maior que 49" : "Menor que 49";
+        },
         nomeCompleto() {
-            console.log(this);
             return `${this.nome} ${this.sobrenome}`
         },
+    },
+    methods: {
         mudarPais() {
             this.pais = 'Brasil';
         },
