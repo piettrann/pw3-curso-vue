@@ -31,7 +31,25 @@
         <h2>Listas</h2>
 
         <ul>
-            <li v-for="(cor, index) in cores">{{cor}} - {{index}}</li>
+            <li :key="index" v-for="(cor, index) in cores">{{cor}} - {{index}}</li>
+        </ul>
+
+        <input type="text" @keyup.enter="cores.push($event.target.value)" />
+
+        <ul>
+            <li :key="index" v-for="(pessoa, index) in pessoas">
+                <template v-for="(valor, chave) in pessoa">
+                    {{chave}} = {{valor}}
+                </template>
+            </li>
+        </ul>
+
+        <ul>
+            <li :key="numero" v-for="numero in 10">{{numero}}</li>
+        </ul>
+
+        <ul>
+            <li :key="index" v-for="(letra, index) in 'Brasil'">{{letra}}</li>
         </ul>
     </main>
 
